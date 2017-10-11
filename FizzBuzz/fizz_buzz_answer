@@ -1,12 +1,15 @@
-# First I had to look up how to iterate through a set of numbers.
-# Found range, but needed a for loop with a nested 'if' clause to iterate through
+""" For this part of the challenge, I wanted the flexibilty to have the user enter 2 different numbers
+I chose 2 different inputs, and understood the ability to use them in a variable, however, upon doing so
+I got the error "TypeError: unsupported operand type(s) for %: 'list' and 'int'" """
 
-for count in range(1, 26):
 
-# At first, it did not print any numbers, just words. So I read online where the logic is "if the statement = 0, then it's True"
-# this first 'if' gave me lot of trouble. I understood the logic, but had it placed as the 2nd
-# 'elif' statement, and 15  would not print as FizzBuzz. After some digging, saw that logically
-# putting it first makes it work.
+# i figured out the above error because I had my variable inputs set each in their own parenthesis marks, like range(first), (second) - 
+# it must have not been able to iterate through the for loop becuase of how it was reading the variables. 
+
+first  = input('Enter first number: ')
+second = input('Enter second number: ')
+
+for count in range(first, second + 1): # added the =1 to account for the last number (since it starts at zero)
 
         if count % 3 == 0 and count % 5 == 0:
                 print"FizzBuzz"
