@@ -1,0 +1,74 @@
+<p id="user"></p>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js">
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"
+</script>
+
+<script>
+
+
+$( document ).ready(function() {
+$.ajax({
+        url: "https://explornet-staging.nasa.gov/api/core/v3/people/@me",
+        type: 'GET',
+        dataType: "text",
+        cache: false,
+        success: function(response) {
+        console.log("ajax (success):");
+        response: response.replace("throw 'allowIllegalResourceCall is false.';", "");
+        console.log(response);
+//        var obj = JSON.stringify(response);
+        var obj = JSON.parse(response.replace(/throw.*;/, "").trim());
+        document.getElementById("user").innerHTML = greeting + " " + obj.displayName;
+        },
+        error: function(response, jqXHR, status, err) {
+        console.log("ajax (error):");
+        console.log(jqXHR);
+        console.log(status);
+        console.log(err);
+        }
+    });
+
+user.style.color = "white";
+user.style.backgroundColor = "steelblue";
+//user.style.cssFloat = "right";
+user.style.width = "100%";
+user.style.height = "20px";
+user.style.display = "inline-block";
+user.style.fontSize = "large";
+user.style.fontFamily = "Helvetica";
+user.style.fontWeight = "300";
+//user.style.marginLeft = "50px";
+//user.style.marginTop = "20px";
+user.style.border = "25px solid steelblue";
+});
+</script>
+
+<script>
+
+    var d = new Date();
+    var n = d.getHours();
+    
+   if (n <= 11) {
+        var greeting = "Good Morning";
+    } else if (n > 11 && n <= 16) {
+        var greeting = "Good Afternoon";
+    } else {
+        var greeting = "Good Evening";
+    }
+//document.getElementById("good").innerHTML = greeting;
+
+greeting.style.color = "white";
+greeting.style.backgroundColor = "steelblue";
+//greeting.style.cssFloat = "right";
+greeting.style.width = "100%";
+greeting.style.height = "20px";
+greeting.style.display = "inline-block";
+greeting.style.fontSize = "large";
+greeting.style.fontFamily = "Helvetica";
+greeting.style.fontWeight = "300";
+//greeting.style.marginLeft = "50px";
+//greeting.style.marginTop = "20px";
+greeting.style.border = "25px solid steelblue";
+</script>
